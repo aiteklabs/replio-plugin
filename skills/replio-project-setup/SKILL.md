@@ -18,7 +18,7 @@ the server is not connected: see
 ## Your role
 
 You are the guide and collector. Replio's own pipeline is the extractor of
-record: always pass the user's ORIGINAL content to knowledge tools, never your
+record: always send the user's ORIGINAL content to knowledge tools, never your
 own summary, and never invent knowledge the user did not provide.
 
 ## Three kinds of connection
@@ -90,7 +90,7 @@ a code in chat; the consent page collects it.
   `update_persona`, `delete_persona`.
 - `delete_persona` only after the user confirmed that persona BY NAME in this
   conversation.
-- `update_persona` objections REPLACE the list positionally: always pass the
+- `update_persona` objections REPLACE the list positionally: always send the
   complete list, including objections you are not changing.
 - Edits apply to new sessions only; past sessions keep their transcript and
   score.
