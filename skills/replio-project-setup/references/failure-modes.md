@@ -55,7 +55,7 @@ then make the narrowest change. Edits apply to new sessions only.
   processing. `get_project_setup_status` with `wait: true`, chain calls, then
   retry.
 - **"The goals do not match our documents"**: `suggest_training_goals` with a
-  precise `focusHint` and the user's `businessContext`; pass only the agreed
+  precise `focusHint` and the user's `businessContext`; send only the agreed
   goals to `generate_personas`.
 - **"Not enough personas"**: `generate_more_personas` with `count` and
   `instructions` (draft pool) or `add_persona` by hand (active project).

@@ -29,8 +29,8 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
   `add_knowledge_text` (title + the user's original text),
   `add_knowledge_url` (public web page).
 - **Goals**: read `suggest_training_goals` (AI suggestions grounded in the
-  project knowledge; pass `businessContext`, `existingGoals`, optional
-  `focusHint`). Write: none (goals are passed to `generate_personas`).
+  project knowledge; send `businessContext`, `existingGoals`, optional
+  `focusHint`). Write: none (goals go to `generate_personas`).
 - **Draft personas (project in setup)**: read `list_generated_personas`.
   Write `generate_personas` (`businessContext` + `trainingGoals`, optional
   `language`), `update_generated_persona`, `regenerate_persona`,
@@ -97,8 +97,8 @@ people.
 - `generate_personas` is refused while the knowledge base is not ready
   (`knowledgeReady: false`); keep polling first.
 - `suggest_training_goals` before `generate_personas`: goals steer the
-  scenarios and objections. Pass the agreed goals, never only the suggestions.
-- `update_persona` `objections` replace the list positionally: pass the
+  scenarios and objections. Send the agreed goals, never only the suggestions.
+- `update_persona` `objections` replace the list positionally: send the
   COMPLETE list (max 12), including objections you are not changing.
   `background`, `goals`, `communicationStyle` accept an empty string to clear.
   `difficultyLevel` is 2 (easy), 3 (medium) or 4 (hard).
