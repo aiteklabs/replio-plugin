@@ -1,0 +1,11 @@
+interface:
+  display_name: "Replio project setup"
+  short_description: "Set up and manage Replio voice-training projects"
+  default_prompt: "Set up a sales training for my team from our product sheet, then review the personas with me."
+dependencies:
+  mcpServers:
+    - name: replio
+      url: "https://api.replio.eu/mcp"
+      transport: "streamable-http"
+      auth:
+        type: "oauth"

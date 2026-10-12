@@ -1,0 +1,26 @@
+{
+  "name": "replio-plugin",
+  "description": "Set up and manage Replio AI voice-training projects from chat: knowledge, training goals, AI personas, quizzes, activation, trainee invitations, and training results.",
+  "owner": {
+    "name": "AitekLabs",
+    "url": "https://github.com/aiteklabs"
+  },
+  "plugins": [
+    {
+      "name": "replio",
+      "description": "Set up and manage Replio AI voice-training projects from chat: knowledge, training goals, AI personas, quizzes, activation, trainee invitations, and training results.",
+      "source": "./",
+      "category": "productivity",
+      "tags": [
+        "replio",
+        "voice-training",
+        "sales-training",
+        "roleplay",
+        "ai-personas",
+        "coaching",
+        "quiz",
+        "trainee-reporting"
+      ]
+    }
+  ]
+}
