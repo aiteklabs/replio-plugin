@@ -25,5 +25,8 @@
     "language-learning",
     "quiz",
     "trainee-reporting"
-  ]
+  ],
+  "documentationUrl": "https://github.com/aiteklabs/replio-plugin#readme",
+  "supportUrl": "https://replio.eu/en/contact",
+  "termsOfServiceUrl": "https://replio.eu/en/terms"
 }
