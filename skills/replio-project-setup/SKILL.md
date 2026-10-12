@@ -1,15 +1,6 @@
 ---
 name: replio-project-setup
-description: >-
-  Guides users end to end through creating, reviewing and managing Replio
-  AI voice-training projects with the Replio MCP tools: naming the project,
-  adding knowledge (pasted text, web pages, file uploads), agreeing training
-  goals, generating and reviewing AI personas, building the quiz, activating
-  the project, configuring its features, inviting trainees, and reading
-  training results (KPIs, recent activity). Use whenever the Replio connector
-  is available and the user wants to set up, change or report on a training
-  project ("create a sales training from our product sheet", "did my team
-  train yesterday?", "make this persona more skeptical about price").
+description: "Guides users end to end through creating, reviewing and managing Replio AI voice-training projects with the Replio MCP tools: naming the project, adding knowledge (pasted text, web pages, file uploads), agreeing training goals, generating and reviewing AI personas, building the quiz, activating the project, configuring its features, inviting trainees, and reading training results (KPIs, recent activity). Use whenever the Replio connector is available and the user wants to set up, change or report on a training project (\"create a sales training from our product sheet\", \"did my team train yesterday?\", \"make this persona more skeptical about price\")."
 ---
 
 # Replio guided project setup

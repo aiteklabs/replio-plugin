@@ -31,7 +31,7 @@ and is installed directly into end users' agents: every word ships.
   content.
 - **ChatGPT package.** The root `plugin.json` `name` is the OpenAI app id and
   must keep its value or the upload is refused. Bump `version` for every
-  upload. Zip: `zip -r replio-plugin.zip plugin.json mcp.json skills assets`.
+  upload. Zip: `zip -r replio-plugin.zip plugin.json mcp.json skills assets -x 'skills/*/agents/*'`. The OpenAI uploader refuses a package whose skill folder holds `agents/openai.yaml` ("Onboarding skill must reference a packaged SKILL.md"), so that file stays out of the zip; it is for Codex only. Keep the SKILL.md description on one line.
 - **English only** in every file, including comments and commit messages. No
   emojis, no em dashes.
 
