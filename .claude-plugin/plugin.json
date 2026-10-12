@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "replio",
+  "displayName": "Replio",
+  "description": "Set up and manage Replio AI voice-training projects from chat: add company knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees, and read training results.",
+  "version": "1.0.0",
+  "author": {
+    "name": "AitekLabs",
+    "url": "https://replio.eu"
+  },
+  "homepage": "https://replio.eu",
+  "repository": "https://github.com/aiteklabs/replio-plugin",
+  "license": "MIT",
+  "icon": "./assets/logo.png",
+  "privacyPolicyUrl": "https://replio.eu/en/privacy",
+  "keywords": [
+    "replio",
+    "voice-training",
+    "sales-training",
+    "roleplay",
+    "ai-personas",
+    "coaching",
+    "onboarding",
+    "customer-support-training",
+    "language-learning",
+    "quiz",
+    "trainee-reporting"
+  ]
+}

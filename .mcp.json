@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "replio": {
+      "type": "http",
+      "url": "https://api.replio.eu/mcp"
+    }
+  }
+}

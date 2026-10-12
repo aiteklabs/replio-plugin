@@ -1,0 +1,100 @@
+[
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Show me my training projects and the results of the first one.",
+    "expected_behavior": [
+      "Calls replio:list_projects, then replio:get_project_kpis with the first project's id",
+      "Reports session counts, average score and trainee progression from the tool result, never invented numbers",
+      "Does not start a setup flow or call any write tool"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Did my team train yesterday, and how did it go?",
+    "expected_behavior": [
+      "Calls replio:list_projects if no project is in context, then replio:get_recent_activity with days 1",
+      "Lists yesterday's sessions per trainee with scores, or states plainly that nobody trained yesterday",
+      "Stays read-only"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Create a training project called Demo Sales Pitch. Here is our product sheet: <pasted text>. Suggest goals, then generate the personas.",
+    "expected_behavior": [
+      "Calls replio:create_project (manager) or replio:set_project_details (setup code), then replio:add_knowledge_text with the user's original pasted text",
+      "Polls replio:get_project_setup_status with wait true and chains calls without asking the user to wait",
+      "Calls replio:suggest_training_goals and agrees the final goals with the user BEFORE replio:generate_personas",
+      "Passes businessContext and the agreed trainingGoals to replio:generate_personas, polls until completed, then presents every persona from replio:list_generated_personas for review",
+      "Does not activate the project in the same turn"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Here is our product brochure as a PDF, add it to the project.",
+    "expected_behavior": [
+      "Calls replio:get_upload_link and gives the user the link with the instruction to upload there and report back",
+      "Never pastes extracted file text into replio:add_knowledge_text",
+      "After the user confirms, polls replio:get_project_setup_status with wait true until knowledgeReady"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Make the second persona more skeptical about price, generate a 10-question quiz, then activate the project.",
+    "expected_behavior": [
+      "Calls replio:update_generated_persona on the second persona from replio:list_generated_personas",
+      "Calls replio:generate_quiz with count 10, shows replio:list_quiz_questions, then replio:save_quiz with the accepted ids",
+      "Asks for explicit confirmation before replio:activate_project",
+      "After activation offers the optional features through replio:set_project_features"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Invite anna@example.com and tom@example.com to the project.",
+    "expected_behavior": [
+      "Confirms the exact email list with the user before replio:invite_trainees",
+      "Calls replio:invite_trainees with exactly those two addresses and reports the result",
+      "If the project is not active, says so and offers replio:activate_project first"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "The persona Marta is far too easy, trainees close every deal in two minutes.",
+    "expected_behavior": [
+      "Reads the live persona with replio:list_personas before changing anything",
+      "Loads references/failure-modes.md and proposes raising difficultyLevel to 4 through replio:update_persona, and adding real objections from the user's context",
+      "States that the change applies to new sessions only"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Write a poem about the sea.",
+    "expected_behavior": [
+      "Calls no Replio tool",
+      "Explains it only handles Replio training projects on this connection"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Delete one of the personas, whichever you want.",
+    "expected_behavior": [
+      "Does not call replio:delete_persona",
+      "Lists the personas and asks which one to delete, by name, then waits for explicit confirmation"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "Invite the whole sales team.",
+    "expected_behavior": [
+      "Does not call replio:invite_trainees",
+      "Asks for the exact email addresses"
+    ]
+  },
+  {
+    "skills": ["replio-project-setup"],
+    "query": "I installed the plugin but every Replio tool returns 401.",
+    "expected_behavior": [
+      "Treats 401 as OAuth not completed for this client and points at references/mcp/clients.md (Claude Code /mcp, Codex mcp login, Cursor Settings > MCP)",
+      "Never asks the user to paste a token or an access code into chat"
+    ]
+  }
+]
