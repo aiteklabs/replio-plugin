@@ -52,7 +52,15 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
   `locale` for the invitation email).
 - **Reporting**: read `get_project_kpis` (sessions, average AI score 0 to 10,
   trainee counts, first-versus-recent progression), `get_recent_activity`
-  (who trained over the last `days`, default 1, with per-trainee scores).
+  (who trained over the last `days`, default 1, with per-trainee scores),
+  `list_sessions` (one row per session over the last `days`, default 7, max
+  90, optional `traineeEmail`; paged with `limit`, `cursor`, `hasMore`,
+  `nextCursor`), `get_session` (one session: analysis summary, strengths,
+  improvements, score breakdown, the five skill scores, key moments, the
+  trainee's goal; expert sessions return a recap instead),
+  `get_session_transcript` (the conversation turns, first 200; manager
+  connections only). The session-analyst skill in this plugin builds reports
+  on these.
 
 ## What each connection can call
 
@@ -63,6 +71,10 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
   that project.
 - **Read code** (scope `mcp:project`): the read tools only, pinned to one
   project.
+
+`get_session_transcript` is listed for manager connections only. Setup and
+read codes do not see it and are refused if they call it: a transcript is a
+different disclosure than the scores a code was shared for.
 
 A code is re-checked on every call: removing the manager who minted it,
 revoking the code, or deleting the project ends access. Relay such refusals
@@ -84,6 +96,10 @@ every tool below); confirm even when a client hides them.
 - `generate_personas`, `generate_quiz`, `regenerate_persona`,
   `regenerate_quiz_question`: replace generated content; on code connections a
   re-run spends one of 3 AI generations per type.
+
+`get_session_transcript` is read-only but opens a trainee's conversation:
+call it only when the user asked for the conversation itself, never to
+decorate a score report.
 
 `add_knowledge_url` and `invite_trainees` reach outside Replio
 (`openWorldHint: true`): the first fetches a public web page, the second emails
@@ -112,6 +128,10 @@ people.
 - `invite_trainees` only works on an ACTIVE project; invitees are saved in the
   organization's contact library in a group named after the project. Setup
   codes may carry an invitation cap.
+- `list_sessions` pages: keep calling with `nextCursor` while `hasMore` is
+  true before stating any count or average. Expert sessions (`mode:
+  "expert"`) carry no score and `analyzed` means their recap is ready; keep
+  them out of every average.
 - Every tool returns `structuredContent` with the keys its `outputSchema`
   documents; read results by those names.
 - Edits apply to new sessions only; past sessions keep their transcript and

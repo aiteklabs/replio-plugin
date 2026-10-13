@@ -33,6 +33,14 @@ own summary, and never invent knowledge the user did not provide.
 `list_projects` shows what the connection can reach. Never ask for a token or
 a code in chat; the consent page collects it.
 
+## Known situations
+
+For a sales objection drill, a support escalation, interviewer practice or a
+language conversation, open the matching recipe in
+[references/recipes/](references/recipes/) first: it lists what to collect,
+the goals to propose and the `businessContext` shape, then hands over to the
+flow below.
+
 ## Setup flow, in order
 
 1. **Name the project.** Ask what to call the training, then
@@ -85,7 +93,10 @@ a code in chat; the consent page collects it.
 ## After activation
 
 - Reporting: `get_project_kpis` and `get_recent_activity` ("did the team train
-  yesterday?"). Report the numbers the tools return, never invented ones.
+  yesterday?"); `list_sessions` and `get_session` for one session or one
+  trainee. Report the numbers the tools return, never invented ones. For a
+  team report, a coaching note or a scenario review, the
+  `replio-session-analyst` skill of this plugin has the method.
 - Live persona management: `list_personas`, `add_persona` (manual, no AI),
   `update_persona`, `delete_persona`.
 - `delete_persona` only after the user confirmed that persona BY NAME in this
@@ -135,3 +146,5 @@ hides them.
   OAuth, access codes, troubleshooting.
 - [references/failure-modes.md](references/failure-modes.md): symptom to fix
   location.
+- [references/recipes/](references/recipes/): sales objection drill, support
+  escalation, interviewer practice, language conversation.

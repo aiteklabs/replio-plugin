@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "app-6a53d8f876808191ab508c8262a1d318",
-  "version": "2.2.0",
-  "description": "Set up and manage Replio voice-training projects from chat: name the training, add knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees and read training results.",
+  "version": "1.1.0",
+  "description": "Set up and manage Replio voice-training projects from chat: name the training, add knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees, read training results, and get team reports and coaching notes from the session results.",
   "author": {
     "name": "AitekLabs",
     "url": "https://replio.eu"
@@ -17,7 +17,8 @@
     "coaching",
     "onboarding",
     "personas",
-    "quiz"
+    "quiz",
+    "session-reports"
   ],
   "extensions": {
     "com.openai": {

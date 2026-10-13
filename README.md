@@ -82,6 +82,7 @@ Then try:
 - _"Review the personas of my training project with me."_
 - _"Make the second persona more skeptical about price."_
 - _"Invite anna@example.com and tom@example.com to the project."_
+- _"Weekly report on the sales training, then a coaching note for Anna."_
 
 ## What you can do
 
@@ -94,16 +95,26 @@ Then try:
 - **Configure the training.** Expert chat, realtime feedback, standalone
   quizzes, hidden persona details, hidden goal selection.
 - **Invite trainees and read results.** Session counts, average score,
-  per-trainee progression, and who trained yesterday.
+  per-trainee progression, who trained yesterday, and every session with
+  its analysis.
+- **Get reports.** A weekly team report, a coaching note for one trainee,
+  or a review of which personas need a look, written from the session
+  results.
+- **Start from a recipe.** Sales objection drill, support escalation,
+  interviewer practice, language conversation: the assistant knows what to
+  collect and which goals to propose.
 
-## Skill
+## Skills
 
 - [replio-project-setup](skills/replio-project-setup): the guided setup flow,
-  the tool catalog, per-client connection steps, and a symptom-to-fix map for
-  persona and session complaints.
+  the tool catalog, per-client connection steps, a symptom-to-fix map for
+  persona and session complaints, and four recipes for known situations.
+- [replio-session-analyst](skills/replio-session-analyst): reports from the
+  session results (team report, coaching note, scenario review), with the
+  rules that keep the numbers honest.
 
-Your agent picks the skill on its own. In Claude Code you can also call it
-directly: `/replio:replio-project-setup`.
+Your agent picks the skill on its own. In Claude Code you can also call one
+directly: `/replio:replio-project-setup` or `/replio:replio-session-analyst`.
 
 ## Repository map
 
@@ -112,7 +123,8 @@ directly: `/replio:replio-project-setup`.
 - `plugin.json`, `mcp.json`: the ChatGPT app package (Agent Plugins layout).
 - `.codex-plugin/`, `.cursor-plugin/`: Codex and Cursor manifests.
 - `server.json`: MCP registry entry.
-- `skills/`: the skill and its references.
+- `skills/`: the two skills and their references.
+- `scripts/`: the version bump script.
 - `skill-evals/`: evaluation queries with expected behaviors.
 - `assets/`: the logo.
 

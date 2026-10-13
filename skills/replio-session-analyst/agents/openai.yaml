@@ -1,0 +1,11 @@
+interface:
+  display_name: "Replio session analyst"
+  short_description: "Reports on Replio voice-training results"
+  default_prompt: "Give me a weekly report on my sales training project."
+dependencies:
+  mcpServers:
+    - name: replio
+      url: "https://api.replio.eu/mcp"
+      transport: "streamable-http"
+      auth:
+        type: "oauth"

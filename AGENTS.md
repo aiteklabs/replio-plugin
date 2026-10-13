@@ -37,11 +37,16 @@ and is installed directly into end users' agents: every word ships.
 
 ## Structure
 
-- `skills/replio-project-setup/`: the one skill. `SKILL.md` holds the guided
-  flow and the hard rules; `references/mcp/tools.md` the tool map and
+- `skills/replio-project-setup/`: setup and management. `SKILL.md` holds the
+  guided flow and the hard rules; `references/mcp/tools.md` the tool map and
   confirmations; `references/mcp/clients.md` per-client connection and auth
   errors; `references/failure-modes.md` symptom to fix location;
-  `agents/openai.yaml` the ChatGPT interface block.
+  `references/recipes/` one file per known situation (what to collect, goals,
+  businessContext shape); `agents/openai.yaml` the Codex interface block.
+- `skills/replio-session-analyst/`: reporting. `SKILL.md` holds the data
+  model, how a score is made and the rules; `references/reports/` one file
+  per report; `references/persona-fix-map.md` a copy of the persona section
+  of failure-modes.md (no cross-skill links, so keep the two in sync).
 - `skill-evals/`: one JSON per skill in Anthropic's evaluation format (query +
   expected behaviors). Run every eval against a test organization before a
   release that touches a skill file; a pass needs every expected behavior.
@@ -58,8 +63,7 @@ and is installed directly into end users' agents: every word ships.
 1. Update the skill and references to match the live `tools/list`.
 2. Run the evals in `skill-evals/` against a test organization.
 3. `claude plugin validate --strict .` must pass.
-4. Raise `version` in `.claude-plugin/plugin.json`, `plugin.json`,
-   `.codex-plugin/plugin.json`, `.cursor-plugin/plugin.json` and
-   `server.json`.
+4. Raise `version` in the five manifests with `scripts/bump-version.sh
+   <version>`.
 5. Merge to `main`. The Anthropic directory follows `main`; re-upload the zip
    to OpenAI.
