@@ -32,6 +32,13 @@ and is installed directly into end users' agents: every word ships.
 - **ChatGPT package.** The root `plugin.json` `name` is the OpenAI app id and
   must keep its value or the upload is refused. Bump `version` for every
   upload. Zip: `zip -r replio-plugin.zip plugin.json mcp.json skills assets -x 'skills/*/agents/*'`. The OpenAI uploader refuses a package whose skill folder holds `agents/openai.yaml` ("Onboarding skill must reference a packaged SKILL.md"), so that file stays out of the zip; it is for Codex only. Keep the SKILL.md description on one line.
+- **One version line.** The five manifests share one `version`, and the
+  OpenAI dashboard refuses a package whose version is not above the last
+  upload, so every release bumps past the ChatGPT version. "Upload new
+  version" is disabled while a version is in review. The dashboard's MCP scan
+  holds its own OAuth grant: when the server invalidates grants, the MCPs tab
+  shows "Authorization for scanning is missing"; fix it with Connect account,
+  then Rescan.
 - **English only** in every file, including comments and commit messages. No
   emojis, no em dashes.
 

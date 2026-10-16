@@ -14,7 +14,10 @@ SKILL.md; the recipe only decides what to collect and what to send.
    mid-size manufacturer, a clinic owner, a retail store manager).
 3. **The three objections that hurt most**: ask for the user's own words from
    lost deals or call notes ("too expensive compared to X", "we already have a
-   supplier", "send me a brochure"). Do not invent objections.
+   supplier", "send me a brochure"). Do not invent objections. If the project
+   is bound to a CRM, call `get_crm_pipeline_digest` first: its objection
+   clusters and lost reasons are the team's real objections; confirm them
+   with the user instead of asking from scratch.
 4. **The stage to practice**: discovery call, demo follow-up, price
    negotiation, renewal. One stage per project keeps the personas focused.
 

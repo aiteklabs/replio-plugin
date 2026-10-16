@@ -15,7 +15,8 @@ then make the narrowest change.
   personality for this.
 - **"The persona never objects" or "always the same objection"**:
   `update_persona` `objections`. Take the real objections from the user's
-  context (lost deals, call notes) and send the COMPLETE list, max 12.
+  context (lost deals, call notes) or, when the project has a CRM bound, from
+  `get_crm_pipeline_digest`, and send the COMPLETE list, max 12.
 - **"The persona states wrong facts"**: the knowledge, not the persona. Add or
   replace the document through `get_upload_link` (the dashboard knowledge page
   has a Replace button for a live document), then confirm with

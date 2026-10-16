@@ -1,6 +1,6 @@
 ---
 name: replio-project-setup
-description: "Guides users end to end through creating, reviewing and managing Replio AI voice-training projects with the Replio MCP tools: naming the project, adding knowledge (pasted text, web pages, file uploads), agreeing training goals, generating and reviewing AI personas, building the quiz, activating the project, configuring its features, inviting trainees, and reading training results (KPIs, recent activity). Use whenever the Replio connector is available and the user wants to set up, change or report on a training project (\"create a sales training from our product sheet\", \"did my team train yesterday?\", \"make this persona more skeptical about price\")."
+description: "Guides users end to end through creating, reviewing and managing Replio AI voice-training projects with the Replio MCP tools: naming the project, adding knowledge (pasted text, web pages, file uploads), agreeing training goals (grounded in the CRM pipeline digest when a CRM is connected), generating and reviewing AI personas, building the quiz, activating the project, configuring its features, inviting trainees, and reading training results (KPIs, recent activity). Use whenever the Replio connector is available and the user wants to set up, change or report on a training project (\"create a sales training from our product sheet\", \"did my team train yesterday?\", \"make this persona more skeptical about price\")."
 ---
 
 # Replio guided project setup
@@ -68,6 +68,11 @@ flow below.
    from the described context). Show them, let the user edit, remove or add
    their own goals, and agree on 2 to 5 final goals. Goals steer the personas'
    scenarios and objections.
+   If the project is bound to a CRM (`get_crm_pipeline_digest` answers
+   `connected: true` with a digest), read it before suggesting: its objection
+   clusters, lost reasons and buyer profiles belong in the goals and in the
+   `businessContext`. Say so when `lowSignal` is true (small sample; the
+   manager can opt in from the project setup page).
 5. **Generate personas.** `generate_personas` with a real `businessContext`
    (the user's own words about the team and the training need) plus the agreed
    `trainingGoals`. Poll with `wait: true` until completed.

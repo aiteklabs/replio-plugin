@@ -100,6 +100,9 @@ Then try:
 - **Get reports.** A weekly team report, a coaching note for one trainee,
   or a review of which personas need a look, written from the session
   results.
+- **Start from your CRM.** When a CRM is connected to the project, the
+  assistant reads an anonymized pipeline digest (objection clusters, lost
+  reasons, buyer profiles) and grounds the goals and personas in it.
 - **Start from a recipe.** Sales objection drill, support escalation,
   interviewer practice, language conversation: the assistant knows what to
   collect and which goals to propose.

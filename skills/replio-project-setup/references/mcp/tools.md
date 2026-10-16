@@ -20,6 +20,11 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
 - **Orientation**: read `list_projects` (projects the connection can reach,
   with organization, status, training domain; call it first to find ids).
   Write: `create_project` (managers only).
+- **Pipeline context (optional)**: read `get_crm_pipeline_digest` (anonymized
+  patterns from the CRM connection bound to the project: objection clusters,
+  lost reasons, stall stages, buyer profiles, won patterns; `connected: false`
+  when the project has no CRM, `lowSignal: true` when fewer than 15 lost deals
+  had notes). Write: none; a CRM is bound from the dashboard.
 - **Project identity**: read none. Write `set_project_details` (name,
   description).
 - **Knowledge**: read `get_upload_link` (the web page where the user uploads
@@ -114,6 +119,12 @@ people.
   (`knowledgeReady: false`); keep polling first.
 - `suggest_training_goals` before `generate_personas`: goals steer the
   scenarios and objections. Send the agreed goals, never only the suggestions.
+- `get_crm_pipeline_digest` before `suggest_training_goals` and
+  `generate_personas` when it answers `connected: true` with a `digest`: the
+  objection clusters, lost reasons and buyer profiles belong in the goals and
+  in `businessContext`. With `lowSignal: true`, say the sample is small and
+  that the manager can opt in from the project setup page;
+  `usedForGeneration` says whether the server already applies the digest.
 - `update_persona` `objections` replace the list positionally: send the
   COMPLETE list (max 12), including objections you are not changing.
   `background`, `goals`, `communicationStyle` accept an empty string to clear.

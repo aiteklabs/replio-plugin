@@ -160,5 +160,17 @@
       "Sends language pt-PT to replio:generate_personas and the level and native language in businessContext",
       "Suggests difficulty 2 for B1 personas"
     ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Our CRM is connected to this project. Build the training from what we actually lose deals on.",
+    "expected_behavior": [
+      "Calls replio:get_crm_pipeline_digest before replio:suggest_training_goals",
+      "When connected is true and a digest is present, proposes goals and a businessContext built from the objection clusters, lost reasons and buyer profiles, and names them to the user",
+      "When lowSignal is true, says the sample is small and that the manager can opt in from the project setup page",
+      "When connected is false, says no CRM is bound to the project and continues with the standard flow"
+    ]
   }
 ]

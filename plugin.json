@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "app-6a53d8f876808191ab508c8262a1d318",
-  "version": "1.1.0",
+  "version": "2.3.0",
   "description": "Set up and manage Replio voice-training projects from chat: name the training, add knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees, read training results, and get team reports and coaching notes from the session results.",
   "author": {
     "name": "AitekLabs",
@@ -26,18 +26,19 @@
       "interface": {
         "displayName": "Replio",
         "shortDescription": "Create AI voice training",
-        "longDescription": "Replio is an AI voice training platform: trainees practice real conversations with lifelike AI personas in live voice sessions and receive scored feedback, while managers follow their progress.\n\nThis plugin lets you set up and run a Replio training project without leaving ChatGPT.\nConnect with your Replio account, or with an access code shared by a Replio manager, then:\n\n- Name and describe your training project\n- Add company knowledge: paste text and links, or upload documents through a secure page\n- Get training goal suggestions generated from your documents and adjust them\n- Generate AI training personas, then review and edit each one before going live\n- Build a knowledge quiz and pick the questions you want to keep\n- Activate the project and invite trainees\n- Check results afterwards: session KPIs and recent team activity\n\nVoice training sessions themselves take place on replio.eu, in 58 languages. Built in Europe, GDPR compliant, with EU data hosting.\n\nLimitations: voice sessions never run inside the chat. Files are uploaded through a Replio web page (the plugin gives you the link) so documents keep their layout, tables and figures. Persona and quiz generation run in the background; the plugin waits and tells you when they are done. Only training-related tasks are supported.",
+        "longDescription": "Replio is an AI voice training platform: trainees practice real conversations with lifelike AI personas in live voice sessions and receive scored feedback, while managers follow their progress.\n\nThis plugin lets you set up and run a Replio training project without leaving ChatGPT.\nConnect with your Replio account, or with an access code shared by a Replio manager, then:\n\n- Name and describe your training project\n- Add company knowledge: paste text and links, or upload documents through a secure page\n- Get training goal suggestions generated from your documents and adjust them\n- Generate AI training personas, then review and edit each one before going live\n- Build a knowledge quiz and pick the questions you want to keep\n- Activate the project and invite trainees\n- Ground the goals and personas in your CRM pipeline when a CRM is connected to the project\n- Check results afterwards: session KPIs, recent team activity, per-session scores and analyses, team reports and coaching notes\n\nVoice training sessions themselves take place on replio.eu, in 58 languages. Built in Europe, GDPR compliant, with EU data hosting.\n\nLimitations: voice sessions never run inside the chat. Files are uploaded through a Replio web page (the plugin gives you the link) so documents keep their layout, tables and figures. Persona and quiz generation run in the background; the plugin waits and tells you when they are done. Only training-related tasks are supported.",
         "developerName": "AitekLabs",
         "category": "Education & Research",
         "capabilities": [
           "Create and name a training project",
           "Add knowledge from pasted text, web pages or uploaded files",
           "Suggest training goals grounded in your documents",
+          "Ground goals and personas in the CRM pipeline digest",
           "Generate and review AI training personas",
           "Generate and review quiz questions",
           "Activate a project and configure its features",
           "Invite trainees by email",
-          "Report training KPIs and recent activity",
+          "Report training KPIs, recent activity and per-session results",
           "Manage live personas and the Persona Library"
         ],
         "websiteURL": "https://replio.eu",
