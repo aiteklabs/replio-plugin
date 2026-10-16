@@ -125,6 +125,25 @@ claude plugin marketplace update replio-plugin
 claude plugin update replio@replio-plugin
 ```
 
+**Codex**
+
+```bash
+codex plugin marketplace update replio
+codex plugin update replio@replio
+```
+
+**Cursor**: Settings > Plugins > Team Marketplaces > Refresh, then update
+**replio**.
+
+**Any coding agent**
+
+```bash
+npx skills update
+```
+
+A new version is announced only when `version` changes in every manifest
+(`scripts/bump-version.sh <version>` edits all five at once).
+
 ## Privacy and support
 
 - Privacy policy: https://replio.eu/en/privacy

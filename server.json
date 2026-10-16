@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "eu.replio/mcp",
   "title": "Replio",
-  "description": "Set up and manage Replio AI voice-training projects: knowledge, training goals, AI personas, quizzes, activation, trainee invitations, and training results.",
+  "description": "Replio AI voice-training projects from chat: knowledge, goals, personas, quizzes, trainees, results.",
   "websiteUrl": "https://replio.eu",
   "repository": {
     "url": "https://github.com/aiteklabs/replio-plugin",
