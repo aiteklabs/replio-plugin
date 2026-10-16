@@ -20,6 +20,11 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
 - **Orientation**: read `list_projects` (projects the connection can reach,
   with organization, status, training domain; call it first to find ids).
   Write: `create_project` (managers only).
+- **Pipeline context (optional)**: read `get_crm_pipeline_digest` (anonymized
+  patterns from the CRM connection bound to the project: objection clusters,
+  lost reasons, stall stages, buyer profiles, won patterns; `connected: false`
+  when the project has no CRM, `lowSignal: true` when fewer than 15 lost deals
+  had notes). Write: none; a CRM is bound from the dashboard.
 - **Project identity**: read none. Write `set_project_details` (name,
   description).
 - **Knowledge**: read `get_upload_link` (the web page where the user uploads
@@ -52,7 +57,15 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
   `locale` for the invitation email).
 - **Reporting**: read `get_project_kpis` (sessions, average AI score 0 to 10,
   trainee counts, first-versus-recent progression), `get_recent_activity`
-  (who trained over the last `days`, default 1, with per-trainee scores).
+  (who trained over the last `days`, default 1, with per-trainee scores),
+  `list_sessions` (one row per session over the last `days`, default 7, max
+  90, optional `traineeEmail`; paged with `limit`, `cursor`, `hasMore`,
+  `nextCursor`), `get_session` (one session: analysis summary, strengths,
+  improvements, score breakdown, the five skill scores, key moments, the
+  trainee's goal; expert sessions return a recap instead),
+  `get_session_transcript` (the conversation turns, first 200; manager
+  connections only). The session-analyst skill in this plugin builds reports
+  on these.
 
 ## What each connection can call
 
@@ -63,6 +76,10 @@ Read tools first, then write tools; "none" means MCP has no tool of that kind.
   that project.
 - **Read code** (scope `mcp:project`): the read tools only, pinned to one
   project.
+
+`get_session_transcript` is listed for manager connections only. Setup and
+read codes do not see it and are refused if they call it: a transcript is a
+different disclosure than the scores a code was shared for.
 
 A code is re-checked on every call: removing the manager who minted it,
 revoking the code, or deleting the project ends access. Relay such refusals
@@ -85,6 +102,10 @@ every tool below); confirm even when a client hides them.
   `regenerate_quiz_question`: replace generated content; on code connections a
   re-run spends one of 3 AI generations per type.
 
+`get_session_transcript` is read-only but opens a trainee's conversation:
+call it only when the user asked for the conversation itself, never to
+decorate a score report.
+
 `add_knowledge_url` and `invite_trainees` reach outside Replio
 (`openWorldHint: true`): the first fetches a public web page, the second emails
 people.
@@ -98,6 +119,12 @@ people.
   (`knowledgeReady: false`); keep polling first.
 - `suggest_training_goals` before `generate_personas`: goals steer the
   scenarios and objections. Send the agreed goals, never only the suggestions.
+- `get_crm_pipeline_digest` before `suggest_training_goals` and
+  `generate_personas` when it answers `connected: true` with a `digest`: the
+  objection clusters, lost reasons and buyer profiles belong in the goals and
+  in `businessContext`. With `lowSignal: true`, say the sample is small and
+  that the manager can opt in from the project setup page;
+  `usedForGeneration` says whether the server already applies the digest.
 - `update_persona` `objections` replace the list positionally: send the
   COMPLETE list (max 12), including objections you are not changing.
   `background`, `goals`, `communicationStyle` accept an empty string to clear.
@@ -112,6 +139,10 @@ people.
 - `invite_trainees` only works on an ACTIVE project; invitees are saved in the
   organization's contact library in a group named after the project. Setup
   codes may carry an invitation cap.
+- `list_sessions` pages: keep calling with `nextCursor` while `hasMore` is
+  true before stating any count or average. Expert sessions (`mode:
+  "expert"`) carry no score and `analyzed` means their recap is ready; keep
+  them out of every average.
 - Every tool returns `structuredContent` with the keys its `outputSchema`
   documents; read results by those names.
 - Edits apply to new sessions only; past sessions keep their transcript and

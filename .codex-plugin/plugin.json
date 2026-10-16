@@ -1,7 +1,7 @@
 {
   "name": "replio",
-  "version": "1.0.0",
-  "description": "Set up and manage Replio AI voice-training projects from chat: add company knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees, and read training results.",
+  "version": "2.3.0",
+  "description": "Set up and manage Replio AI voice-training projects from chat: add company knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees, read training results, and get team reports and coaching notes from the session results.",
   "author": {
     "name": "AitekLabs",
     "url": "https://replio.eu"
@@ -9,7 +9,16 @@
   "homepage": "https://replio.eu",
   "repository": "https://github.com/aiteklabs/replio-plugin",
   "license": "MIT",
-  "keywords": ["replio", "voice-training", "sales-training", "roleplay", "ai-personas", "coaching", "quiz"],
+  "keywords": [
+    "replio",
+    "voice-training",
+    "sales-training",
+    "roleplay",
+    "ai-personas",
+    "coaching",
+    "quiz",
+    "session-reports"
+  ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
@@ -18,13 +27,17 @@
     "longDescription": "Replio is an AI voice-training platform: trainees practice real conversations with lifelike AI personas in live voice sessions and receive scored feedback. This plugin sets up and manages Replio training projects from chat: name the training, add knowledge, agree goals, review personas and quiz questions, activate, invite trainees, and read results.",
     "developerName": "AitekLabs",
     "category": "Productivity",
-    "capabilities": ["Read", "Write"],
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://replio.eu",
     "defaultPrompt": [
       "Set up a sales training for my team from our product sheet.",
       "Did my team train yesterday, and how did it go?",
       "Review the personas of my training project with me.",
-      "Make the second persona more skeptical about price."
+      "Make the second persona more skeptical about price.",
+      "Weekly report on the sales training, then a coaching note for Anna."
     ]
   }
 }

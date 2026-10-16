@@ -1,6 +1,8 @@
 [
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Show me my training projects and the results of the first one.",
     "expected_behavior": [
       "Calls replio:list_projects, then replio:get_project_kpis with the first project's id",
@@ -9,7 +11,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Did my team train yesterday, and how did it go?",
     "expected_behavior": [
       "Calls replio:list_projects if no project is in context, then replio:get_recent_activity with days 1",
@@ -18,7 +22,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Create a training project called Demo Sales Pitch. Here is our product sheet: <pasted text>. Suggest goals, then generate the personas.",
     "expected_behavior": [
       "Calls replio:create_project (manager) or replio:set_project_details (setup code), then replio:add_knowledge_text with the user's original pasted text",
@@ -29,7 +35,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Here is our product brochure as a PDF, add it to the project.",
     "expected_behavior": [
       "Calls replio:get_upload_link and gives the user the link with the instruction to upload there and report back",
@@ -38,7 +46,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Make the second persona more skeptical about price, generate a 10-question quiz, then activate the project.",
     "expected_behavior": [
       "Calls replio:update_generated_persona on the second persona from replio:list_generated_personas",
@@ -48,7 +58,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Invite anna@example.com and tom@example.com to the project.",
     "expected_behavior": [
       "Confirms the exact email list with the user before replio:invite_trainees",
@@ -57,7 +69,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "The persona Marta is far too easy, trainees close every deal in two minutes.",
     "expected_behavior": [
       "Reads the live persona with replio:list_personas before changing anything",
@@ -66,7 +80,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Write a poem about the sea.",
     "expected_behavior": [
       "Calls no Replio tool",
@@ -74,7 +90,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Delete one of the personas, whichever you want.",
     "expected_behavior": [
       "Does not call replio:delete_persona",
@@ -82,7 +100,9 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "Invite the whole sales team.",
     "expected_behavior": [
       "Does not call replio:invite_trainees",
@@ -90,11 +110,67 @@
     ]
   },
   {
-    "skills": ["replio-project-setup"],
+    "skills": [
+      "replio-project-setup"
+    ],
     "query": "I installed the plugin but every Replio tool returns 401.",
     "expected_behavior": [
       "Treats 401 as OAuth not completed for this client and points at references/mcp/clients.md (Claude Code /mcp, Codex mcp login, Cursor Settings > MCP)",
       "Never asks the user to paste a token or an access code into chat"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Set up an objection drill for our three sales reps. We sell accounting software to small firms and keep losing on price.",
+    "expected_behavior": [
+      "Loads references/recipes/sales-objection-drill.md and asks for the buyer role, the three real objections in the user's words, and the stage to practice before generating anything",
+      "Builds businessContext from the user's words (offer, buyer, price position, objections verbatim, stage) and agrees goals through replio:suggest_training_goals before replio:generate_personas",
+      "Checks that the generated personas carry the real objections as single spoken behaviors"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Our support agents need to practice angry customers asking for refunds outside the window.",
+    "expected_behavior": [
+      "Loads references/recipes/support-escalation.md and asks for the refund policy as a file (replio:get_upload_link) or pasted text before persona generation",
+      "Proposes de-escalation goals and suggests realtimeFeedbackEnabled after activation"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "I want our candidates to rehearse their job interviews with an AI interviewer.",
+    "expected_behavior": [
+      "Loads references/recipes/hr-interview-practice.md and says plainly that the persona plays the candidate, never the interviewer",
+      "Offers the interviewer drill or a communication training instead of inventing an unsupported setup"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Create a Portuguese conversation practice for our B1 learners, Portugal variant, about this menu I will upload.",
+    "expected_behavior": [
+      "Loads references/recipes/language-conversation.md, asks for the learners' native language, and sends the file through replio:get_upload_link",
+      "Sends language pt-PT to replio:generate_personas and the level and native language in businessContext",
+      "Suggests difficulty 2 for B1 personas"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Our CRM is connected to this project. Build the training from what we actually lose deals on.",
+    "expected_behavior": [
+      "Calls replio:get_crm_pipeline_digest before replio:suggest_training_goals",
+      "When connected is true and a digest is present, proposes goals and a businessContext built from the objection clusters, lost reasons and buyer profiles, and names them to the user",
+      "When lowSignal is true, says the sample is small and that the manager can opt in from the project setup page",
+      "When connected is false, says no CRM is bound to the project and continues with the standard flow"
     ]
   }
 ]

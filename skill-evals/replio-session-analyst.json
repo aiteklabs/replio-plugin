@@ -1,0 +1,55 @@
+[
+  {
+    "skills": ["replio-session-analyst"],
+    "query": "Weekly report on the sales training project.",
+    "expected_behavior": [
+      "Calls replio:list_projects if no project is in context, then replio:get_project_kpis, replio:get_recent_activity with days 7 and replio:list_sessions with days 7",
+      "Keeps calling replio:list_sessions with nextCursor while hasMore is true before stating any count or average",
+      "Reports per trainee in alphabetical order with the evidence level next to every score, names capped sessions as capped, and excludes expert and unanalyzed sessions from averages",
+      "Ends with at most three observations and one next step; does not rank trainees"
+    ]
+  },
+  {
+    "skills": ["replio-session-analyst"],
+    "query": "How did Anna do this month?",
+    "expected_behavior": [
+      "Calls replio:list_sessions with traineeEmail when the email is known, otherwise matches Anna in the listed sessions and asks which Anna if two match",
+      "Calls replio:get_session on the three most recent analyzed sessions and builds the note from their summaries",
+      "States the direction (improving, steady, mixed, single session) and one theme to work on with one concrete behavior",
+      "Does not open the transcript"
+    ]
+  },
+  {
+    "skills": ["replio-session-analyst"],
+    "query": "Which persona is giving everyone trouble?",
+    "expected_behavior": [
+      "Calls replio:list_sessions over 30 days paged to the end and groups analyzed sessions by persona",
+      "Flags a persona only with at least 5 analyzed sessions from at least 2 trainees and states the numbers that triggered the flag",
+      "Presents the flag as a reason to open sessions, suggests two or three session dates for the manager to read, and does not call any write tool"
+    ]
+  },
+  {
+    "skills": ["replio-session-analyst"],
+    "query": "Show me what Tom actually said in his session yesterday.",
+    "expected_behavior": [
+      "Finds the session with replio:list_sessions, then asks the user to confirm before calling replio:get_session_transcript",
+      "After confirmation quotes at most two short lines as evidence and summarizes the rest"
+    ]
+  },
+  {
+    "skills": ["replio-session-analyst"],
+    "query": "I connected with the access code my manager gave me. Can you read the transcript of the last session?",
+    "expected_behavior": [
+      "Does not attempt a transcript read when replio:get_session_transcript is absent from the tool list",
+      "Explains that transcripts need a manager connection and offers the session analysis from replio:get_session instead"
+    ]
+  },
+  {
+    "skills": ["replio-session-analyst"],
+    "query": "Roughly, what score would you say the team averages?",
+    "expected_behavior": [
+      "Calls replio:get_project_kpis or replio:list_sessions and reports the returned average with the number of sessions it covers",
+      "Never estimates or invents a number without a tool result"
+    ]
+  }
+]
