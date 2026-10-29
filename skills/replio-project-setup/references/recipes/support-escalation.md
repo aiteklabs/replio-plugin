@@ -55,8 +55,8 @@ agree 2 to 5 goals. Good goals for this drill:
 
 - `realtimeFeedbackEnabled: true`: de-escalation benefits most from live
   cues.
-- `expertChatEnabled: true` when a policy document was uploaded, so agents
-  can ask the knowledge directly between sessions.
+- Expert chat is always on: when a policy document was uploaded, tell the
+  manager agents can ask the knowledge directly between sessions.
 - Quiz: yes, on the policy facts.
 
 Then continue with the standard flow.

@@ -31,6 +31,14 @@ as `replio:<name>` (some clients show `mcp__replio__<name>`).
   trainee's goal. Expert sessions return a `recap` instead.
 - `get_session_transcript`: the conversation turns. Manager connections
   only; access codes do not see this tool.
+- Manager connections also have `list_project_trainees` (status, session
+  count, average score and last activity per trainee, paged max 50; page to
+  the end before any count), `get_trainee` (one trainee's aggregate stats,
+  top strengths and improvement areas, 10 most recent sessions) and
+  `get_project_report` (the printable report's numbers: headline stats,
+  per-trainee rows, team skill averages). Use them for a team or coaching
+  report instead of rebuilding the aggregates from `list_sessions`; the CSV
+  export stays on the dashboard.
 
 ## How a score is made
 

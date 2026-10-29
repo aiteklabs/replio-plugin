@@ -40,12 +40,11 @@ then make the narrowest change. Edits apply to new sessions only.
   chosen by the trainee in the app.
 - **"Trainees should just start, no goal to pick"**: `set_project_features`
   `hideGoalSelection: true`.
-- **"Trainees want to ask questions about the material"**:
-  `set_project_features` `expertChatEnabled: true`. A voice expert grounded
+- **"Trainees want to ask questions about the material"**: expert chat is
+  always on for every active project (no flag): a voice expert grounded
   exclusively in the project knowledge, no scoring.
-- **"We need a knowledge check without a voice session"**:
-  `set_project_features` `standaloneQuizzesEnabled: true` (the quiz must be
-  saved first with `save_quiz`).
+- **"We need a knowledge check without a voice session"**: practice quizzes
+  are always on (no flag); the quiz must be saved first with `save_quiz`.
 - **"The score looks too low for a short session"**: sessions under 60 s are
   capped at 5 out of 10, and one-word sessions at 2, by design. Longer
   sessions score normally.

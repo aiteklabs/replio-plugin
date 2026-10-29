@@ -92,8 +92,9 @@ Then try:
 - **Review every persona before going live.** Edit a persona, regenerate one,
   add more, or import a reusable character from your Persona Library.
 - **Build a knowledge quiz.** Generate, review and save the questions.
-- **Configure the training.** Expert chat, realtime feedback, standalone
-  quizzes, hidden persona details, hidden goal selection.
+- **Configure the training.** Realtime feedback, hidden persona details,
+  hidden goal selection, Replio Live on the project. Expert chat, practice
+  quizzes and reminder emails are always on.
 - **Invite trainees and read results.** Session counts, average score,
   per-trainee progression, who trained yesterday, and every session with
   its analysis.
@@ -106,6 +107,13 @@ Then try:
 - **Start from a recipe.** Sales objection drill, support escalation,
   interviewer practice, language conversation: the assistant knows what to
   collect and which goals to propose.
+- **Run the workspace (managers).** Contact library and groups, enrolling a
+  group into a project, trainee management (resend, deactivate, remove,
+  reminders, persona restrictions), phone training (Replio Call), Replio
+  Live knowledge contexts and briefs, the Knowledge Library, reports, usage,
+  the manager team, project duplication and join links. Every action that
+  sends email, uses seats, cancels calls or deletes shows a preview and asks
+  before acting.
 
 ## Skills
 
