@@ -2,7 +2,7 @@
   "name": "replio",
   "displayName": "Replio",
   "description": "Set up and manage Replio AI voice-training projects from chat: add company knowledge, agree training goals, review AI personas and quiz questions, activate the project, invite trainees, read training results, and get team reports and coaching notes from the session results.",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": {
     "name": "AitekLabs",
     "url": "https://replio.eu"

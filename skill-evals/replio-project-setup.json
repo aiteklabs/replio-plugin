@@ -172,5 +172,53 @@
       "When lowSignal is true, says the sample is small and that the manager can opt in from the project setup page",
       "When connected is false, says no CRM is bound to the project and continues with the standard flow"
     ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Add maria@example.com, joao@example.com and rita@example.com to our contacts, put them in a new group called Lisbon sales, then enrol that group in the Demo Sales Pitch project.",
+    "expected_behavior": [
+      "Calls replio:add_contacts with exactly those three addresses and states that nothing was sent and no seat was used",
+      "Calls replio:manage_contact_group with action create and name Lisbon sales, then replio:set_contact_group_members with action add and the contact ids returned by the tools, never guessed ids",
+      "Calls replio:assign_contacts_to_project with the group id and without confirm, shows the preview (people, already enrolled, seats before and after, emails that go out) and asks",
+      "Calls replio:assign_contacts_to_project again with confirm true only after the user agreed, then reports sent and skipped counts"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Turn on phone training for the support project, two calls per person per month until the end of next quarter, and send everyone the booking link.",
+    "expected_behavior": [
+      "Calls replio:get_phone_training first; when it answers available false, says phone training is not activated on this deployment and stops without calling the other phone tools",
+      "Otherwise calls replio:set_phone_training with enabled true, callsPerMonth 2 and the end date as YYYY-MM-DD, and says turning it on sends no email",
+      "Calls replio:send_phone_invitations with scope all without confirm, shows the recipient count from the preview and asks before calling again with confirm true",
+      "Mentions missing_number as the way to reach participants without a phone number later"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "Set up a Replio Live context for our new pricing: name it Pricing 2027, link the pricing folder from the library, and publish the brief.",
+    "expected_behavior": [
+      "Calls replio:get_live_workspace first; when it answers available false, says Replio Live is not enabled for the organization and stops",
+      "Calls replio:manage_live_context with action create and name Pricing 2027, then replio:link_live_documents with the folder id from replio:get_live_workspace as the full set of folderIds",
+      "Polls replio:get_live_context with wait true while stillProcessing, then presents every fact card and withheld card before publishing and offers replio:manage_live_card to hide or correct",
+      "Calls replio:set_live_brief_published with published true, then says objection cards still need approval, reviews their wording with the user and calls replio:manage_live_objection approve_all only after agreement, noting that any rebuild resets it"
+    ]
+  },
+  {
+    "skills": [
+      "replio-project-setup"
+    ],
+    "query": "We already have the onboarding handbook in the Knowledge Library. Link it to the new hires project and add this FAQ page too: https://example.com/faq",
+    "expected_behavior": [
+      "Calls replio:list_knowledge_library and finds the handbook's asset id instead of asking the user to upload it again",
+      "Calls replio:manage_project_documents with action link, that assetId and the default syncMode auto_sync, and says the project knowledge rebuilds in the background",
+      "Calls replio:add_library_document with kind url and the FAQ URL, then links the returned document to the project with replio:manage_project_documents",
+      "Polls replio:get_project_setup_status with wait true until knowledgeReady before offering goals or personas"
+    ]
   }
 ]
